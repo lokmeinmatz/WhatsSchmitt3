@@ -6,7 +6,9 @@ Vue.use(VueRouter)
 
 
 import Home from "./Home.vue";
+import Me from "./Me.vue";
 
 export default new VueRouter({routes: [
-  {path: '/', component: Home}
+  {path: '/', component: Home},
+  {path: '/me', component: Me},
 ]})

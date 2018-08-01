@@ -1,12 +1,19 @@
 <template>
   <v-app>
-    <v-navigation-drawer
+    <v-navigation-drawer v-model="navDrawer" clipped enable-resize-watcher app>
       
-      v-model="navDrawer"
-      clipped
-      enable-resize-watcher
-      app
-    >
+      <v-list class="pa-0">
+        <v-list-tile avatar to="/me">
+          <v-list-tile-avatar>
+            <img src="https://randomuser.me/api/portraits/men/85.jpg">
+          </v-list-tile-avatar>
+
+          <v-list-tile-content>
+            <v-list-tile-title>Hans Peter</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+      </v-list>
+      <v-divider></v-divider>
       <v-list>
         <v-list-tile
           value="true"
@@ -34,7 +41,9 @@
     </v-toolbar>
     
     <v-content>
-      <router-view></router-view>
+      <v-container fluid>
+        <router-view></router-view>
+      </v-container>
     </v-content>
     
     <v-footer app>
