@@ -1,12 +1,14 @@
 <template>
-  <v-list-tile avatar>
-    <v-list-tile-avatar>
-      <img :src="item.avatar">
-    </v-list-tile-avatar>
-
+  <v-list-tile avatar @click="console.log('')">
+    <v-badge left overlap>
+      <span slot="badge">{{message.unreadMessageCount}}</span>
+      <v-list-tile-avatar>
+        <img :src="message.avatar">
+      </v-list-tile-avatar>
+    </v-badge>
     <v-list-tile-content>
-      <v-list-tile-title>{{item.message}}</v-list-tile-title>
-      <v-list-tile-sub-title v-html="item.meta"></v-list-tile-sub-title>
+      <v-list-tile-title>{{message.content}}</v-list-tile-title>
+      <v-list-tile-sub-title v-html="message.meta"></v-list-tile-sub-title>
     </v-list-tile-content>
   </v-list-tile>
 </template>
@@ -18,7 +20,7 @@
 export default {
   name: 'ChatPreview',
   props: {
-    item: Object
+    message: Object
   }
 }
 </script>
