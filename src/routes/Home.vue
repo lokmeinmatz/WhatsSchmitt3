@@ -1,6 +1,6 @@
 <template>
-  <v-container fluid grid-list-lg>
-    <v-slide-y-transition mode="out-in">
+  
+    <v-container fluid grid-list-lg>
       <v-layout row wrap justify-center>
         <v-flex sm12 md6>
           <!-- New MESSAGES -->
@@ -44,8 +44,8 @@
           </v-card>
         </v-flex>
       </v-layout>
-    </v-slide-y-transition>
-  </v-container>
+    </v-container>
+  
 </template>
 
 <script>

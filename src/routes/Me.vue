@@ -1,24 +1,23 @@
 <template>
-  <v-slide-y-transition mode="out-in">
-    <div class="aboutme">
-      <v-container fluid grid-list-lg >
-      <v-layout wrap>
-        <v-flex xs12 sm4 xl2 class="pl-0" align-content-center justify-space-around>
+  <div class="aboutme">
+    <v-container fluid grid-list-lg >
+    <v-layout wrap>
+      <v-flex xs12 sm4 xl2 class="pl-0" >
+        <div class="me-wrapper">
           <v-avatar size="96">
-            <img src="https://avatars0.githubusercontent.com/u/9064066?v=4&s=460" alt="Avatar">
+            <img src="https://randomuser.me/api/portraits/men/85.jpg" alt="Avatar">
           </v-avatar>
-        </v-flex>
-        <v-flex xs12 sm8>
-          <div class="headline pt-3 pl-1">
-            Hans Peter
-          </div>
-          <v-text-field solo label="Regular"></v-text-field> 
-          
-        </v-flex>
-      </v-layout>
-    </v-container>
-    </div>
-  </v-slide-y-transition>
+        </div>
+      </v-flex>
+      <v-flex xs12 sm6>
+        <div class="headline pt-3 pl-1 pb-1">
+          {{$store.getters.user.name}}
+        </div>
+        <v-text-field solo label="Status" v-model="status"></v-text-field> 
+      </v-flex>
+    </v-layout>
+  </v-container>
+  </div>
 </template>
 
 <script>
@@ -28,8 +27,20 @@ import ChatPreview from '../components/ChatPreview.vue'
 export default {
   name: 'Me',
   components: {ChatPreview},
+  computed: {
+    status: {
+      get() {
+        return this.$store.getters.user.status
+      },
+      set(val) {
+        // eslint-disable-next-line
+        this.$store.commit('updateUserStatus', val)
+      }
+    }
+  },
   data: function(){
     return {
+      
       days: [
         {header: 'Heute',
         newMessages: [
@@ -46,7 +57,8 @@ export default {
           {avatar: require('../assets/empty.png'), content: 'Heute 13 Uhr!', meta: '<span class="text--primary">Alle Teamer</span> &mdash; Sebastian 12:14', unreadMessageCount: 3},
         ]
     }
-  }
+  },
+  
 }
 </script>
 
@@ -54,9 +66,14 @@ export default {
 <style scoped>
 .aboutme {
   max-width: 700px;
+  margin: 0 auto;
 }
 
-.v-avatar {
-
+.me-wrapper {
+  width: min-content;
+  margin: 0 auto;
 }
+
+
+
 </style>
